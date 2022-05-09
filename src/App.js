@@ -38,8 +38,16 @@ function App() {
     <div className="App">
       <div className="container">
         {qteLaunch ? <Qte /> : [
-          loading && <div className="row">{counter}</div>,
-          !loading && <button onClick={onStart}>start</button>
+          loading && <div className="row counter">{counter}</div>,
+          !loading && [
+            <div className="row" style={{marginBottom: 15}}>
+              Improve QTE in lost ark
+              <div className="description">
+                Make the best streak possible
+              </div>
+            </div>,
+            <button onClick={onStart}>start</button>
+          ]
         ]}
       </div>
     </div>

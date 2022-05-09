@@ -75,8 +75,19 @@ button {
   font-size: 18px;
   font-weight: bold;
   cursor: pointer;
+  padding: 10px 20px;
 }
 
 .qte-win {
   margin-bottom: 20px;
+}
+
+.counter {
+  font-size: 48px;
+}
+
+.description {
+  font-size: 14px;
+  font-style: italic;
+  margin-top: 5px;
 }
