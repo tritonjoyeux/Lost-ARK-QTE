@@ -64,7 +64,6 @@
 }
 
 .progress-bar {
-  background-color: orange;
   -webkit-transition: width 0.3s ease;
   -o-transition: width 0.3 ease;
   transition: width 0.3 ease;
@@ -90,4 +89,25 @@ button {
   font-size: 14px;
   font-style: italic;
   margin-top: 5px;
+}
+
+.content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.progress-container {
+  width: 100%;
+}
+
+.qte-container {
+  border-width: 3px;
+  border-style: solid;
+  border-radius: 10px;
+  flex-direction: row;
+  display: flex;
+  margin-bottom: 10px;
 }

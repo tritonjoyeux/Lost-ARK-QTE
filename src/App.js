@@ -37,18 +37,21 @@ function App() {
   return (
     <div className="App">
       <div className="container">
-        {qteLaunch ? <Qte /> : [
-          loading && <div key="counter" className="row counter">{counter}</div>,
-          !loading && [
-            <div key="title-container" className="row" style={{marginBottom: 15}}>
-              Improve QTE in lost ark
-              <div className="description">
-                Make the best streak possible
-              </div>
-            </div>,
-            <button key="button-container" onClick={onStart}>start</button>
-          ]
-        ]}
+        <div className="content">
+          {qteLaunch ? <Qte /> : [
+            loading && <div key="counter" className="row counter">{counter}</div>,
+            !loading && [
+              <div key="title-container" className="row" style={{marginBottom: 15}}>
+                Improve QTE in lost ark
+                <div className="description">
+                  Make the best streak possible
+                </div>
+              </div>,
+              <button key="button-container" onClick={onStart}>start</button>
+            ]
+          ]}
+        </div>
+        <footer style={{fontSize: 12, padding: 10}}>Property of Tritonjoyeux - Provided by Heroku ®</footer>
       </div>
     </div>
   );

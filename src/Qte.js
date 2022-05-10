@@ -95,14 +95,11 @@ export const Qte = () => {
     return (
         <div className="qte">
             {!loss ?
-                <div style={{
-                    borderColor: error ? 'red' : (success ? 'green' : 'transparent'),
-                    borderWidth: 3,
-                    borderStyle: 'solid',
-                    borderRadius: 10,
-                    flexDirection: 'row',
-                    display: 'flex',
-                }}>
+                <div
+                    className="qte-container"
+                    style={{
+                        borderColor: error ? 'red' : (success ? 'green' : 'transparent'),
+                    }}>
                     {qte.map((qteV, index) => {
                         return <div key={index} className={"qte-item" + (qte[index] === playerInput[index] ? ' good-item' : '')}>{qteV}</div>
                     })}
@@ -117,8 +114,13 @@ export const Qte = () => {
             }
 
             {!loss &&
-                <div style={{width: '100%'}}>
-                    <div className="progress-bar" style={{width: progress + '%'}}></div>
+                <div className="progress-container">
+                    <div 
+                        className="progress-bar" 
+                        style={{
+                            width: progress + '%', 
+                            backgroundColor: (progress > 70 ? 'green' : (progress < 35 ? 'red' : 'orange'))
+                        }}></div>
                 </div>
             }
         </div>
