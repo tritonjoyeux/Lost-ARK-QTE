@@ -62,12 +62,14 @@ export const Qte = () => {
     }
 
     const keyPressQte = (event) => {
-        playerInput.push(event.key)
-        checkQte()
+        if('azertyuiopqsdfghjklmwxcvbn'.includes(event.key)) {
+            playerInput.push(event.key)
+            checkQte()
+        }
     }
 
     useEffect(() => {
-        if(loss || qteGame.length === 0) {
+        if(error || loss || qteGame.length === 0) {
             return
         }
         
@@ -87,7 +89,8 @@ export const Qte = () => {
             clearInterval(inter)
             document.removeEventListener('keydown', keyPressQte);
         }
-    }, [progress])
+        // eslint-disable-next-line
+    }, [progress, error, loss])
 
     return (
         <div className="qte">
@@ -101,13 +104,13 @@ export const Qte = () => {
                     display: 'flex',
                 }}>
                     {qte.map((qteV, index) => {
-                        return <div key={index} className={"qte-item" + (qteV === playerInput[index] ? ' good-item' : '')}>{qteV}</div>
+                        return <div key={index} className={"qte-item" + (qte[index] === playerInput[index] ? ' good-item' : '')}>{qteV}</div>
                     })}
                 </div> 
                 : 
                 [
-                    <div className="qte-win">You {streak !== 0 ? ('win ! Streak : ' + streak) : 'loss'}</div>,
-                    <button className='btn' onClick={() => {
+                    <div key="title" className="qte-win">You {streak !== 0 ? ('win ! Streak : ' + streak) : 'loss'}</div>,
+                    <button key="button" className='btn' onClick={() => {
                         window.location.reload()
                     }}>Retry ?</button>
                 ]
