@@ -3,12 +3,12 @@ import Ga from '../services/ga';
 const analytics = new Ga();
 analytics.event('qte', 'start', '')
 
-const randomQte = () => {
-    const lengthOfQte = 6;
-    const inputs = ['a', 'z', 'e', 'r', 'q', 's', 'd', 'f', 'w']
+const randomQte = (inputsT, lengthOfQte) => {
+    const inputs = inputsT.split('')
+    const length = parseInt(lengthOfQte)
     let results = [];
 
-    for(let i = 0; i < lengthOfQte; i++) {
+    for(let i = 0; i < length; i++) {
         const random = Math.floor(Math.random() * inputs.length)
         results.push(inputs[random])
     }
@@ -16,15 +16,16 @@ const randomQte = () => {
 }
 
 let playerInput = [];
-let qteGame = randomQte();
+let qteGame = [];
 
-export const Qte = () => {
+export const Qte = ({length, inputs}) => {
     const [error, setError] = useState(false)
     const [success, setSuccess] = useState(false)
     const [loss, setLoss] = useState(false)
     const [progress, setProgress] = useState(100)
     const [qte, setQte] = useState(qteGame)
     const [streak, setStreak] = useState(0)
+    const [start, setStart] = useState(false)
 
     const checkQte = () => {
         if(qteGame.slice(0, playerInput.length).join('') === playerInput.join('')) {
@@ -45,7 +46,7 @@ export const Qte = () => {
         setStreak(streak + 1)
         setTimeout(() => {
             setProgress(100)
-            let qt = randomQte()
+            let qt = randomQte(inputs, length)
             qteGame = qt
             playerInput = []
             setQte(qt)
@@ -56,7 +57,7 @@ export const Qte = () => {
     const fail = () => {
         setError(true)
         setTimeout(() => {
-            let qt = randomQte()
+            let qt = randomQte(inputs, length)
             qteGame = qt
             playerInput = []
             setQte(qt)
@@ -72,6 +73,12 @@ export const Qte = () => {
     }
 
     useEffect(() => {
+        if(!start) {
+            qteGame = randomQte(inputs, length)
+            setQte(qteGame)
+            setStart(true)
+        }
+
         if(error || loss || qteGame.length === 0) {
             return
         }
