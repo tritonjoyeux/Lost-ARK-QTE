@@ -1,4 +1,7 @@
 import {useState, useEffect} from 'react';
+import Ga from '../services/ga';
+const analytics = new Ga();
+analytics.event('qte', 'start', '')
 
 const randomQte = () => {
     const lengthOfQte = 6;
@@ -74,6 +77,7 @@ export const Qte = () => {
         }
         
         if(progress <= 0) {
+            analytics.event('qte', streak > 0 ? 'win ' : 'lost', streak)
             setLoss(true)
             fail()
             return

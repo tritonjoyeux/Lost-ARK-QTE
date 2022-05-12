@@ -1,6 +1,9 @@
 import './App.css';
 import {useState, useEffect} from 'react';
-import { Qte } from './Qte';
+import { Qte } from './components/Qte';
+import Ga from './services/ga';
+const analytics = new Ga();
+analytics.pageview();
 
 function App() {
   const [loading, setLoading] = useState(false);
