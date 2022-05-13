@@ -3,7 +3,7 @@ import ReactGA from 'react-ga';
 
 class Ga {
     constructor() {
-        ReactGA.initialize('G-XMS8X65Z96');
+        ReactGA.initialize('G-KQ0V1M8QYY');
     }
 
     event(category, action, value) {
